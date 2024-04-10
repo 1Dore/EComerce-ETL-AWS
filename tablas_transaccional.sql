@@ -1,117 +1,102 @@
--- para una base de datos en mysql
-
-create table Categoria (
-    idcategoria int not null auto_increment primary key,
-    nombre varchar(50) not null,
-    descripcion varchar(255) not null,
-    estado bit,
+CREATE TABLE Categoria (
+    idcategoria SERIAL PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    descripcion VARCHAR(255) NOT NULL,
+    estado BOOLEAN
 );
 
-create table Articulo (
-
-    idarticulo int not null auto_increment primary key,
-    idcategoria int not null,
-    codigo varchar(50) not null,
-    nombre varchar(100) not null,
-    precio_venta decimal(11, 2) not null,
-    stock int not null,
-    descripcion varchar(255) not null,
-    imagen varchar(20) not null,
-    estado bit not null,
-    foreign key (idcategoria) references Categoria(idcategoria)
+CREATE TABLE Articulo (
+    idarticulo SERIAL PRIMARY KEY,
+    idcategoria INT NOT NULL,
+    codigo VARCHAR(50) NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
+    precio_venta NUMERIC(11, 2) NOT NULL,
+    stock INT NOT NULL,
+    descripcion VARCHAR(255) NOT NULL,
+    imagen VARCHAR(20) NOT NULL,
+    estado BOOLEAN NOT NULL,
+    FOREIGN KEY (idcategoria) REFERENCES Categoria(idcategoria)
 );
 
-create table Rol (
-
-    idrol int not null auto_increment primary key,
-    nombre varchar(30) not null,
-    descripcion varchar(255) not null,
-    estado bit
-
+CREATE TABLE Rol (
+    idrol SERIAL PRIMARY KEY,
+    nombre VARCHAR(30) NOT NULL,
+    descripcion VARCHAR(255) NOT NULL,
+    estado BOOLEAN
 );
 
-create table Usuario (
-
-    idusuario int not null auto_increment primary key,
-    idrol int not null,
-    nombre varchar(100) not null,
-    tipo_documento varchar(20),
-    num_documento varchar(20),
-    direccion varchar(70),
-    telefono varchar(20),
-    email varchar(50),
-    clave varbinary(max_length),
-    estado bit,
-    foreign key (idrol) references Rol(idrol)
-
+CREATE TABLE Usuario (
+    idusuario SERIAL PRIMARY KEY,
+    idrol INT NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
+    tipo_documento VARCHAR(20),
+    num_documento VARCHAR(20),
+    direccion VARCHAR(70),
+    telefono VARCHAR(20),
+    email VARCHAR(50),
+    clave BYTEA,
+    estado BOOLEAN,
+    FOREIGN KEY (idrol) REFERENCES Rol(idrol)
 );
 
-create table Persona (
-
-    idpersona int not null auto_increment primary key,
-    tipo_persona varchar(20),
-    nombre varchar(100) not null,
-    tipo_documento varchar(20),
-    num_documento varchar(20),
-    direccion varchar(70),
-    telefono varchar(20),
-    email varchar(50)
-
+CREATE TABLE Persona (
+    idpersona SERIAL PRIMARY KEY,
+    tipo_persona VARCHAR(20),
+    nombre VARCHAR(100) NOT NULL,
+    tipo_documento VARCHAR(20),
+    num_documento VARCHAR(20),
+    direccion VARCHAR(70),
+    telefono VARCHAR(20),
+    email VARCHAR(50)
 );
 
-create table Ingreso (
-
-    idingreso int not null auto_increment primary key,
-    idproveedor int not null,
-    idusuario int not null,
-    tipo_comprobante varchar(20),
-    serie_comprobante varchar(7),
-    num_comprobante varchar(10),
-    fecha DateTime not null,
-    impuesto Decimal(4,2),
-    total Decimal(11,2),
-    estado varchar(20),
-    foreign key (idproveedor) references Persona(idpersona), 
-    foreign key (idusuario) references Usuario(idusuario)
+CREATE TABLE Ingreso (
+    idingreso SERIAL PRIMARY KEY,
+    idproveedor INT NOT NULL,
+    idusuario INT NOT NULL,
+    tipo_comprobante VARCHAR(20),
+    serie_comprobante VARCHAR(7),
+    num_comprobante VARCHAR(10),
+    fecha TIMESTAMP NOT NULL,
+    impuesto NUMERIC(4, 2),
+    total NUMERIC(11, 2),
+    estado VARCHAR(20),
+    FOREIGN KEY (idproveedor) REFERENCES Persona(idpersona), 
+    FOREIGN KEY (idusuario) REFERENCES Usuario(idusuario)
 );
 
-create table Detalle_Ingreso (
-
-    iddetalle_ingreso int not null auto_increment primary key,
-    idingreso int not null,
-    idarticulo int not null,
-    cantidad int not null,
-    precio decimal(11, 2) not null,
-    foreign key (idarticulo) references Articulo(idarticulo),
-    foreign key (idingreso) references Ingreso(idingreso)
+CREATE TABLE Detalle_Ingreso (
+    iddetalle_ingreso SERIAL PRIMARY KEY,
+    idingreso INT NOT NULL,
+    idarticulo INT NOT NULL,
+    cantidad INT NOT NULL,
+    precio NUMERIC(11, 2) NOT NULL,
+    FOREIGN KEY (idarticulo) REFERENCES Articulo(idarticulo),
+    FOREIGN KEY (idingreso) REFERENCES Ingreso(idingreso)
 );
 
-create table Venta (
-
-    idventa int not null auto_increment primary key,
-    idcliente int not null,
-    idusuario int not null,
-    tipo_comprobante varchar(20),
-    serie_comprobante varchar(7),
-    num_comprobante varchar(10),
-    fecha DateTime not null,
-    impuesto Decimal(4,2),
-    total Decimal(11,2),
-    estado varchar(20),
-    foreign key (idcliente) references Persona(idpersona),
-    foreign key (idusuario) references Usuario(idusuario)
-
+CREATE TABLE Venta (
+    idventa SERIAL PRIMARY KEY,
+    idcliente INT NOT NULL,
+    idusuario INT NOT NULL,
+    tipo_comprobante VARCHAR(20),
+    serie_comprobante VARCHAR(7),
+    num_comprobante VARCHAR(10),
+    fecha TIMESTAMP NOT NULL,
+    impuesto NUMERIC(4, 2),
+    total NUMERIC(11, 2),
+    estado VARCHAR(20),
+    FOREIGN KEY (idcliente) REFERENCES Persona(idpersona),
+    FOREIGN KEY (idusuario) REFERENCES Usuario(idusuario)
 );
 
-create table Detalle_venta (
-
-    iddetalle_venta int not null auto_increment primary key,
-    idventa int not null,
-    idarticulo int not null,
-    cantidad int,
-    precio decimal(11,2),
-    descuento decimal(11,2),
-    foreign key (idventa) references Venta(idventa),
-    foreign key (idarticulo) references Articulo(idarticulo)
-
+CREATE TABLE Detalle_venta (
+    iddetalle_venta SERIAL PRIMARY KEY,
+    idventa INT NOT NULL,
+    idarticulo INT NOT NULL,
+    cantidad INT,
+    precio NUMERIC(11, 2),
+    descuento NUMERIC(11, 2),
+    FOREIGN KEY (idventa) REFERENCES Venta(idventa),
+    FOREIGN KEY (idarticulo) REFERENCES Articulo(idarticulo)
 );
