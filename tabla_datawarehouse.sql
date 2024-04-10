@@ -58,3 +58,23 @@ CREATE TABLE Persona (
     email varchar(100),
     
 );
+
+
+Create Table Ventas (
+
+    idusuario int,
+    idarticulo int,
+    idpersona int,
+    idventa int,
+    idcantidad int,
+    precio decimal(11,2),
+    descuento decimal(11,2),
+    idfecha int,
+    impuesto decimal(4,2),
+    total decimal(11, 2),
+    FOREIGN key (idusuario) REFERENCES Usuario (idusuario),
+    Foreign key (idpersona) REFERENCES Persona (idpersona),
+    Foreign key (idarticulo) REFERENCES Articulo (idarticulo),
+    Foreign key (idfecha) REFERENCES Tiempo (idfecha)
+
+);
