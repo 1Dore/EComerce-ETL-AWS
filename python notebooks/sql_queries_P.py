@@ -100,4 +100,4 @@ CREATE TABLE Detalle_venta (
     descuento NUMERIC(11, 2),
     FOREIGN KEY (idventa) REFERENCES Venta(idventa),
     FOREIGN KEY (idarticulo) REFERENCES Articulo(idarticulo)
-);
+);'''
