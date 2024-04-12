@@ -100,4 +100,8 @@ CREATE TABLE Detalle_venta (
     descuento NUMERIC(11, 2),
     FOREIGN KEY (idventa) REFERENCES Venta(idventa),
     FOREIGN KEY (idarticulo) REFERENCES Articulo(idarticulo)
+<<<<<<<< HEAD:sql_query.py
 ); '''
+========
+);'''
+>>>>>>>> main:python notebooks/sql_queries_P.py
