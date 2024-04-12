@@ -1,3 +1,4 @@
+DDL_QUERY =  '''
 CREATE TABLE Categoria (
     idcategoria SERIAL PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL,
