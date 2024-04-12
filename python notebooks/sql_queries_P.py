@@ -102,6 +102,3 @@ CREATE TABLE Detalle_venta (
     FOREIGN KEY (idarticulo) REFERENCES Articulo(idarticulo)
 <<<<<<<< HEAD:sql_query.py
 ); '''
-========
-);'''
->>>>>>>> main:python notebooks/sql_queries_P.py
