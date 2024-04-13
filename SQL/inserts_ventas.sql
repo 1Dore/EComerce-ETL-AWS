@@ -300,3 +300,15 @@ VALUES (99, 2, 'Factura', 'A001', '000119', '2024-04-13', NULL, NULL, 'Pendiente
 
 INSERT INTO Venta (idcliente, idusuario, tipo_comprobante, serie_comprobante, num_comprobante, fecha, impuesto, total, estado)
 VALUES (99, 2, 'Factura', 'A001', '000120', '2024-04-13', NULL, NULL, 'Pendiente');
+
+-- Venta 3
+INSERT INTO Venta (idcliente, idusuario, tipo_comprobante, serie_comprobante, num_comprobante, fecha, impuesto, total, estado)
+VALUES (33, 2, 'Factura', 'A001', '000121', '2024-01-15 10:00:00', NULL, NULL, 'Pendiente');
+
+-- Venta 4
+INSERT INTO Venta (idcliente, idusuario, tipo_comprobante, serie_comprobante, num_comprobante, fecha, impuesto, total, estado)
+VALUES (34, 2, 'Factura', 'A001', '000122', '2024-01-22 10:00:00', NULL, NULL, 'Pendiente');
+
+-- Venta 5
+INSERT INTO Venta (idcliente, idusuario, tipo_comprobante, serie_comprobante, num_comprobante, fecha, impuesto, total, estado)
+VALUES (35, 2, 'Factura', 'A001', '000123', '2024-01-29 10:00:00', NULL, NULL, 'Pendiente');
