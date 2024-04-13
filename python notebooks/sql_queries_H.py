@@ -1,13 +1,13 @@
-DDL_QUERY = '''-- base de datos hecha en mysql
+DDL_QUERY = '''
 
 create table Tiempo (
-
+    
     idfecha int primary key,
     fecha_completa DateTime,
     fecha_dia_semana int,
-    fehca_dia_mes int,
+    fechca_dia_mes int,
     dia_nombre varchar(10),
-    semana_fin_bandera varchar(13), -- entre semana, fin de semana
+    semana_fin_bandera varchar(13),
     semana_ano int,
     dia_semana_inicio datetime,
     mes int,
@@ -16,20 +16,18 @@ create table Tiempo (
     mes_fiscal int,
     cuarto_fiscal int,
     ano_fiscal int,
-    mes_fin_bandera varchar(13), -- fin de mes, mes
-
+    mes_fin_bandera varchar(13)
 );
-
 CREATE TABLE Usuario (
 
-    idusuario int,
+    idusuario int primary key,
     idrol int,
     nombre varchar(100),
     tipo_documento varchar(20),
     num_documento varchar(20),
     direccion varchar(20),
     telefono varchar(20),
-    clave varbinary(MAX),
+    clave varbinary(200),
     estado bit,
     rol_nombre varchar(30)
 
@@ -37,7 +35,7 @@ CREATE TABLE Usuario (
 
 CREATE TABLE Articulo (
 
-    idarticulo int,
+    idarticulo int primary key,
     nombre_categoria varchar(30),
     codigo varchar(50),
     nombre varchar(100),
@@ -48,14 +46,14 @@ CREATE TABLE Articulo (
 
 CREATE TABLE Persona (
 
-    idpersona int,
+    idpersona int primary key,
     tipo_persona varchar(20),
     nombre varchar(100),
     tipo_documento varchar(20),
     num_documento varchar(20),
-    direccion varchar (50),
+    direccion varchar(50),
     telefono varchar(15),
-    email varchar(100),
+    email varchar(100)
     
 );
 
@@ -66,10 +64,10 @@ Create Table Ventas (
     idarticulo int,
     idpersona int,
     idventa int,
-    idcantidad int,
-    precio decimal(11,2),
-    descuento decimal(11,2),
     idfecha int,
+    precio decimal(11,2),
+    cantidad int,
+    descuento decimal(11,2),
     impuesto decimal(4,2),
     total decimal(11, 2),
     FOREIGN key (idusuario) REFERENCES Usuario (idusuario),
