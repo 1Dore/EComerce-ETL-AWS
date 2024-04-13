@@ -81,3 +81,6 @@ VALUES (5, 'ELEC4', 'Laptop Computer', 999.99, 15, 'A powerful laptop computer f
 
 INSERT INTO Articulo (idcategoria, codigo, nombre, precio_venta, stock, descripcion, imagen, estado)
 VALUES (5, 'ELEC5', 'Portable Bluetooth Speaker', 79.99, 20, 'Take your music on the go with this portable Bluetooth speaker.', '', true);
+
+UPDATE Articulo SET stock = stock + 20;
+UPDATE Articulo SET stock = stock * 76;
