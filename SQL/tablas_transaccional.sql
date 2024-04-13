@@ -72,7 +72,7 @@ CREATE TABLE Detalle_Ingreso (
     idingreso INT NOT NULL,
     idarticulo INT NOT NULL,
     cantidad INT NOT NULL,
-    precio NUMERIC(11, 2) NOT NULL,
+    precio NUMERIC(11, 2),
     FOREIGN KEY (idarticulo) REFERENCES Articulo(idarticulo),
     FOREIGN KEY (idingreso) REFERENCES Ingreso(idingreso)
 );
