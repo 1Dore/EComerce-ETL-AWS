@@ -1,13 +1,12 @@
 -- base de datos hecha en mysql
 
 create table Tiempo (
-
     idfecha int primary key,
     fecha_completa DateTime,
     fecha_dia_semana int,
     fechca_dia_mes int,
     dia_nombre varchar(10),
-    semana_fin_bandera varchar(13), -- entre semana, fin de semana
+    semana_fin_bandera varchar(13),
     semana_ano int,
     dia_semana_inicio datetime,
     mes int,
@@ -16,10 +15,8 @@ create table Tiempo (
     mes_fiscal int,
     cuarto_fiscal int,
     ano_fiscal int,
-    mes_fin_bandera varchar(13) -- fin de mes, mes
-
+    mes_fin_bandera varchar(13)
 );
-
 CREATE TABLE Usuario (
 
     idusuario int primary key,
@@ -29,7 +26,7 @@ CREATE TABLE Usuario (
     num_documento varchar(20),
     direccion varchar(20),
     telefono varchar(20),
-    clave varbinary(MAX),
+    clave varbinary(200),
     estado bit,
     rol_nombre varchar(30)
 
