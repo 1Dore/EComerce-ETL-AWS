@@ -1,13 +1,14 @@
 DDL_QUERY = '''
+-- base de datos hecha en mysql
 
-create table Tiempo (
-    
+create table dim_Tiempo (
+
     idfecha int primary key,
     fecha_completa DateTime,
     fecha_dia_semana int,
     fechca_dia_mes int,
     dia_nombre varchar(10),
-    semana_fin_bandera varchar(13),
+    semana_fin_bandera varchar(13), -- entre semana, fin de semana
     semana_ano int,
     dia_semana_inicio datetime,
     mes int,
@@ -16,24 +17,23 @@ create table Tiempo (
     mes_fiscal int,
     cuarto_fiscal int,
     ano_fiscal int,
-    mes_fin_bandera varchar(13)
+    mes_fin_bandera varchar(13) -- fin de mes, mes
+
 );
-CREATE TABLE Usuario (
+
+CREATE TABLE dim_Usuario (
 
     idusuario int primary key,
     idrol int,
     nombre varchar(100),
     tipo_documento varchar(20),
     num_documento varchar(20),
-    direccion varchar(20),
-    telefono varchar(20),
-    clave varbinary(200),
     estado bit,
     rol_nombre varchar(30)
 
 );
 
-CREATE TABLE Articulo (
+CREATE TABLE dim_Articulo (
 
     idarticulo int primary key,
     nombre_categoria varchar(30),
@@ -44,7 +44,7 @@ CREATE TABLE Articulo (
 
 );
 
-CREATE TABLE Persona (
+CREATE TABLE dim_Persona (
 
     idpersona int primary key,
     tipo_persona varchar(20),
@@ -58,7 +58,7 @@ CREATE TABLE Persona (
 );
 
 
-Create Table Ventas (
+Create Table fact_Ventas (
 
     idusuario int,
     idarticulo int,
@@ -74,5 +74,5 @@ Create Table Ventas (
     Foreign key (idpersona) REFERENCES Persona (idpersona),
     Foreign key (idarticulo) REFERENCES Articulo (idarticulo),
     Foreign key (idfecha) REFERENCES Tiempo (idfecha)
-
+);
 );'''
