@@ -5,7 +5,7 @@ create table dim_Tiempo (
     idfecha int primary key,
     fecha_completa DateTime,
     fecha_dia_semana int,
-    fechca_dia_mes int,
+    fecha_dia_mes int,
     dia_nombre varchar(10),
     semana_fin_bandera varchar(13), -- entre semana, fin de semana
     semana_ano int,
