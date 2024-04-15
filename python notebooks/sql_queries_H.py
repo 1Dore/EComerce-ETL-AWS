@@ -68,7 +68,7 @@ Create Table fact_Ventas (
     precio decimal(11,2),
     cantidad int,
     descuento decimal(11,2),
-    impuesto decimal(4,2),
+    impuesto decimal(11,2),
     total decimal(11, 2),
     FOREIGN key (idusuario) REFERENCES Usuario (idusuario),
     Foreign key (idpersona) REFERENCES Persona (idpersona),
